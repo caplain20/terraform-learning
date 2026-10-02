@@ -1,0 +1,24 @@
+terraform {
+  cloud {
+    organization = "caplain20-terraform"
+
+    workspaces {
+      name = "terraform-lab-05"
+    }
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-west-3"
+}
+
+resource "aws_s3_bucket" "bucket_hcp" {
+  bucket = "terraform-lab05-hcp-caplainm"
+}
